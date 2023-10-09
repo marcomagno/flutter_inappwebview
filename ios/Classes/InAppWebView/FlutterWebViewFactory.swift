@@ -9,29 +9,32 @@ import Flutter
 import Foundation
 
 public class FlutterWebViewFactory: NSObject, FlutterPlatformViewFactory {
-    private var registrar: FlutterPluginRegistrar?
-    
-    static weak var lastCreatedWebViewController: FlutterWebViewController?
-    
-    init(registrar: FlutterPluginRegistrar?) {
-        super.init()
-        self.registrar = registrar
-    }
-    
-    public func createArgsCodec() -> FlutterMessageCodec & NSObjectProtocol {
-        return FlutterStandardMessageCodec.sharedInstance()
-    }
-    
-    public func create(withFrame frame: CGRect, viewIdentifier viewId: Int64, arguments args: Any?) -> FlutterPlatformView {
-        let arguments = args as? NSDictionary
-        let webviewController = FlutterWebViewController(registrar: registrar!,
-                                                         withFrame: frame,
-                                                         viewIdentifier: viewId,
-                                                         params: arguments!)
-        webviewController.makeInitialLoad(params: arguments!)
-        
-        FlutterWebViewFactory.lastCreatedWebViewController = webviewController
-        
-        return webviewController
-    }
+  private var registrar: FlutterPluginRegistrar?
+
+  public static weak var lastCreatedWebViewController: FlutterWebViewController?
+
+  init(registrar: FlutterPluginRegistrar?) {
+    super.init()
+    self.registrar = registrar
+  }
+
+  public func createArgsCodec() -> FlutterMessageCodec & NSObjectProtocol {
+    return FlutterStandardMessageCodec.sharedInstance()
+  }
+
+  public func create(withFrame frame: CGRect, viewIdentifier viewId: Int64, arguments args: Any?)
+    -> FlutterPlatformView
+  {
+    let arguments = args as? NSDictionary
+    let webviewController = FlutterWebViewController(
+      registrar: registrar!,
+      withFrame: frame,
+      viewIdentifier: viewId,
+      params: arguments!)
+    webviewController.makeInitialLoad(params: arguments!)
+
+    FlutterWebViewFactory.lastCreatedWebViewController = webviewController
+
+    return webviewController
+  }
 }
