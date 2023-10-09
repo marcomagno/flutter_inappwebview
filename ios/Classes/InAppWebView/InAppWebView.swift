@@ -59,6 +59,10 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate, WKNavi
     
     var oldZoomScale = Float(1.0)
     
+    /// If not null, it is called in webView(_:decidePolicyFor:decisionHandler:) delegate method, skipping default implementation
+    var primaryNavigationPolicyHandler: ((WKWebView, WKNavigationAction, @escaping (WKNavigationActionPolicy) -> Void) -> Void)?
+
+    
     init(frame: CGRect, configuration: WKWebViewConfiguration, contextMenu: [String: Any]?, channel: FlutterMethodChannel?, userScripts: [UserScript] = []) {
         super.init(frame: frame, configuration: configuration)
         self.channel = channel
@@ -1463,6 +1467,11 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate, WKNavi
         
         if windowId != nil, !windowCreated {
             decisionHandler(.cancel)
+            return
+        }
+        
+        if let primaryNavigationPolicyHandler {
+            primaryNavigationPolicyHandler(webView, navigationAction, decisionHandler)
             return
         }
         
