@@ -1,6 +1,287 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:../../ios/Classes"
+      name = "Classes">
+      <FileRef
+         location = "group:CustomeSchemeHandler.swift">
+      </FileRef>
+      <FileRef
+         location = "group:PlatformUtil.swift">
+      </FileRef>
+      <FileRef
+         location = "group:LeakAvoider.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Options.swift">
+      </FileRef>
+      <FileRef
+         location = "group:InAppWebViewStatic.swift">
+      </FileRef>
+      <Group
+         location = "group:SafariViewController"
+         name = "SafariViewController">
+         <FileRef
+            location = "group:SafariViewController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:SafariBrowserOptions.swift">
+         </FileRef>
+         <FileRef
+            location = "group:ChromeSafariBrowserManager.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Types"
+         name = "Types">
+         <FileRef
+            location = "group:SslError.swift">
+         </FileRef>
+         <FileRef
+            location = "group:URLRequest.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WKSecurityOrigin.swift">
+         </FileRef>
+         <FileRef
+            location = "group:UserScript.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WebViewTransport.swift">
+         </FileRef>
+         <FileRef
+            location = "group:UIColor.swift">
+         </FileRef>
+         <FileRef
+            location = "group:ClientCertChallenge.swift">
+         </FileRef>
+         <FileRef
+            location = "group:HitTestResult.swift">
+         </FileRef>
+         <FileRef
+            location = "group:URLResponse.swift">
+         </FileRef>
+         <FileRef
+            location = "group:URLCredential.swift">
+         </FileRef>
+         <FileRef
+            location = "group:SslCertificate.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Size2D.swift">
+         </FileRef>
+         <FileRef
+            location = "group:URLAuthenticationChallenge.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WKWindowFeatures.swift">
+         </FileRef>
+         <FileRef
+            location = "group:NSAttributedString.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WebMessageChannel.swift">
+         </FileRef>
+         <FileRef
+            location = "group:DownloadStartRequest.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WKUserContentController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:SecCertificate.swift">
+         </FileRef>
+         <FileRef
+            location = "group:ServerTrustChallenge.swift">
+         </FileRef>
+         <FileRef
+            location = "group:URLProtectionSpace.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WKNavigationAction.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WKNavigationResponse.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WebMessageListener.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WKFrameInfo.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WebMessage.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WKContentWorld.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WebMessagePort.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PluginScript.swift">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:InAppWebViewFlutterPlugin.m">
+      </FileRef>
+      <Group
+         location = "group:InAppBrowser"
+         name = "InAppBrowser">
+         <FileRef
+            location = "group:InAppBrowserDelegate.swift">
+         </FileRef>
+         <FileRef
+            location = "group:InAppBrowserNavigationController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:InAppBrowserWebViewController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:InAppBrowserManager.swift">
+         </FileRef>
+         <FileRef
+            location = "group:InAppBrowserOptions.swift">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:SwiftFlutterPlugin.swift">
+      </FileRef>
+      <FileRef
+         location = "group:HttpAuthenticationChallenge.swift">
+      </FileRef>
+      <FileRef
+         location = "group:InAppWebViewMethodHandler.swift">
+      </FileRef>
+      <FileRef
+         location = "group:CredentialDatabase.swift">
+      </FileRef>
+      <FileRef
+         location = "group:WKProcessPoolManager.swift">
+      </FileRef>
+      <Group
+         location = "group:PluginScriptsJS"
+         name = "PluginScriptsJS">
+         <FileRef
+            location = "group:InterceptAjaxRequestJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WebMessageListenerJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:OnWindowBlurEventJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:LastTouchedAnchorOrImageJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PrintJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:EnableViewportScaleJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:SupportZoomJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:OriginalViewPortMetaTagContentJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PromisePolyfillJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:InterceptFetchRequestJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:JavaScriptBridgeJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WebMessageChannelJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:ConsoleLogJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FindTextHighlightJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:OnLoadResourceJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:OnWindowFocusEventJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FindElementsAtPointJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PluginScriptsUtil.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WindowIdJS.swift">
+         </FileRef>
+         <FileRef
+            location = "group:CallAsyncJavaScriptBelowIOS14WrapperJS.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:HeadlessInAppWebView"
+         name = "HeadlessInAppWebView">
+         <FileRef
+            location = "group:HeadlessInAppWebViewManager.swift">
+         </FileRef>
+         <FileRef
+            location = "group:HeadlessInAppWebView.swift">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:MyWebStorageManager.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Util.swift">
+      </FileRef>
+      <FileRef
+         location = "group:FlutterMethodCallDelegate.swift">
+      </FileRef>
+      <FileRef
+         location = "group:ContextMenuOptions.swift">
+      </FileRef>
+      <FileRef
+         location = "group:InAppWebViewFlutterPlugin.h">
+      </FileRef>
+      <FileRef
+         location = "group:MyCookieManager.swift">
+      </FileRef>
+      <Group
+         location = "group:InAppWebView"
+         name = "InAppWebView">
+         <FileRef
+            location = "group:InAppWebViewOptions.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FlutterWebViewController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:FlutterWebViewFactory.swift">
+         </FileRef>
+         <FileRef
+            location = "group:InAppWebView.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:PullToRefresh"
+         name = "PullToRefresh">
+         <FileRef
+            location = "group:PullToRefreshControl.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PullToRefreshOptions.swift">
+         </FileRef>
+         <FileRef
+            location = "group:PullToRefreshDelegate.swift">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:Runner.xcodeproj">
    </FileRef>

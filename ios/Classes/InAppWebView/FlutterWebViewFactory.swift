@@ -11,6 +11,8 @@ import Foundation
 public class FlutterWebViewFactory: NSObject, FlutterPlatformViewFactory {
     private var registrar: FlutterPluginRegistrar?
     
+    static weak var lastCreatedWebViewController: FlutterWebViewController?
+    
     init(registrar: FlutterPluginRegistrar?) {
         super.init()
         self.registrar = registrar
@@ -27,6 +29,9 @@ public class FlutterWebViewFactory: NSObject, FlutterPlatformViewFactory {
                                                          viewIdentifier: viewId,
                                                          params: arguments!)
         webviewController.makeInitialLoad(params: arguments!)
+        
+        FlutterWebViewFactory.lastCreatedWebViewController = webviewController
+        
         return webviewController
     }
 }
