@@ -57,6 +57,10 @@ public class InAppWebViewClient extends WebViewClient {
   private static int previousAuthRequestFailureCount = 0;
   private static List<URLCredential> credentialsProposed = null;
 
+  /// If not null, it trumps methods implementations
+  public InAppWebViewClientPrimaryOverrides primaryOverrides;
+
+
   public InAppWebViewClient(MethodChannel channel, InAppBrowserDelegate inAppBrowserDelegate) {
     super();
 
@@ -100,6 +104,11 @@ public class InAppWebViewClient extends WebViewClient {
   @Override
   public boolean shouldOverrideUrlLoading(WebView webView, String url) {
     InAppWebView inAppWebView = (InAppWebView) webView;
+
+    if (primaryOverrides != null) {
+      return primaryOverrides.shouldOverrideUrlLoading(webView, url);
+    }
+
     if (inAppWebView.options.useShouldOverrideUrlLoading) {
       onShouldOverrideUrlLoading(inAppWebView, url, "GET", null,true, false, false);
       return true;
