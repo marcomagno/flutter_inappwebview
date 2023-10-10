@@ -6,6 +6,7 @@ import com.pichillilorenzo.flutter_inappwebview.in_app_webview.FlutterWebView;
 import com.pichillilorenzo.flutter_inappwebview.types.PlatformWebView;
 import com.pichillilorenzo.flutter_inappwebview.types.WebViewImplementation;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 import io.flutter.plugin.common.StandardMessageCodec;
@@ -14,6 +15,8 @@ import io.flutter.plugin.platform.PlatformViewFactory;
 
 public class FlutterWebViewFactory extends PlatformViewFactory {
   private final InAppWebViewFlutterPlugin plugin;
+
+  static public WeakReference<FlutterWebView> lastCreatedFlutterWebView;
 
   public FlutterWebViewFactory(final InAppWebViewFlutterPlugin plugin) {
     super(StandardMessageCodec.INSTANCE);
@@ -32,6 +35,10 @@ public class FlutterWebViewFactory extends PlatformViewFactory {
         flutterWebView = new FlutterWebView(plugin, context, id, params);
     }
     flutterWebView.makeInitialLoad(params);
+
+    if (flutterWebView instanceof FlutterWebView) {
+      lastCreatedFlutterWebView = new WeakReference(flutterWebView);
+    }
     
     return flutterWebView;
   }
