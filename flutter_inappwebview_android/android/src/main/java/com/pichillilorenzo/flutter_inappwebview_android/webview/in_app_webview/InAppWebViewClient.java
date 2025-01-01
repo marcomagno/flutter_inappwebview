@@ -64,6 +64,9 @@ public class InAppWebViewClient extends WebViewClient {
   private static int previousAuthRequestFailureCount = 0;
   private static List<URLCredential> credentialsProposed = null;
 
+  /// If not null, it trumps methods implementations
+  public InAppWebViewClientPrimaryOverrides primaryOverrides;
+
   public InAppWebViewClient(InAppBrowserDelegate inAppBrowserDelegate) {
     super();
     this.inAppBrowserDelegate = inAppBrowserDelegate;
@@ -73,6 +76,11 @@ public class InAppWebViewClient extends WebViewClient {
   @Override
   public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
     InAppWebView webView = (InAppWebView) view;
+
+    if (primaryOverrides != null) {
+      return primaryOverrides.shouldOverrideUrlLoading(webView, request.getUrl().toString());
+    }
+
     if (webView.customSettings.useShouldOverrideUrlLoading) {
       boolean isRedirect = false;
       if (WebViewFeature.isFeatureSupported(WebViewFeature.WEB_RESOURCE_REQUEST_IS_REDIRECT)) {
@@ -107,6 +115,11 @@ public class InAppWebViewClient extends WebViewClient {
   @Override
   public boolean shouldOverrideUrlLoading(WebView webView, String url) {
     InAppWebView inAppWebView = (InAppWebView) webView;
+
+    if (primaryOverrides != null) {
+      return primaryOverrides.shouldOverrideUrlLoading(webView, url);
+    }
+
     if (inAppWebView.customSettings.useShouldOverrideUrlLoading) {
       onShouldOverrideUrlLoading(inAppWebView, url, "GET", null,true, false, false);
       return true;

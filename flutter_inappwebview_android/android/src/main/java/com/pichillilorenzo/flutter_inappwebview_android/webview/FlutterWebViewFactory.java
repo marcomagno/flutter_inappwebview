@@ -9,6 +9,7 @@ import com.pichillilorenzo.flutter_inappwebview_android.headless_in_app_webview.
 import com.pichillilorenzo.flutter_inappwebview_android.headless_in_app_webview.HeadlessInAppWebViewManager;
 import com.pichillilorenzo.flutter_inappwebview_android.webview.in_app_webview.FlutterWebView;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 import io.flutter.plugin.common.StandardMessageCodec;
@@ -18,6 +19,7 @@ import io.flutter.plugin.platform.PlatformViewFactory;
 public class FlutterWebViewFactory extends PlatformViewFactory {
   public static final String VIEW_TYPE_ID = "com.pichillilorenzo/flutter_inappwebview";
   private final InAppWebViewFlutterPlugin plugin;
+  static public WeakReference<FlutterWebView> lastCreatedFlutterWebView;
 
   public FlutterWebViewFactory(final InAppWebViewFlutterPlugin plugin) {
     super(StandardMessageCodec.INSTANCE);
@@ -74,8 +76,10 @@ public class FlutterWebViewFactory extends PlatformViewFactory {
     if (shouldMakeInitialLoad) {
       flutterWebView.makeInitialLoad(params);
     }
-    
-    return flutterWebView;
+
+      lastCreatedFlutterWebView = new WeakReference<>(flutterWebView);
+
+      return flutterWebView;
   }
 }
 
