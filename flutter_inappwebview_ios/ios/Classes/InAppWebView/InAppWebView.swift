@@ -68,8 +68,7 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate,
     var oldZoomScale = Float(1.0)
     
     /// If not null, it is called in webView(_:decidePolicyFor:decisionHandler:) or webView(_:decidePolicyFor:preferences:decisionHandler:) delegate method, skipping default implementation
-    var primaryNavigationPolicyHandler: ((WKWebView, WKNavigationAction, @escaping (WKNavigationActionPolicy) -> Void) -> Void)?
-    
+    public var primaryNavigationPolicyHandler: ((WKWebView, WKNavigationAction, @escaping (WKNavigationActionPolicy) -> Void) -> Void)?
     
     fileprivate var interceptOnlyAsyncAjaxRequestsPluginScript: PluginScript?
     
