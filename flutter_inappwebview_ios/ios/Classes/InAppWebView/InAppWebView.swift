@@ -67,6 +67,10 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate,
     
     var oldZoomScale = Float(1.0)
     
+    /// If not null, it is called in webView(_:decidePolicyFor:decisionHandler:) or webView(_:decidePolicyFor:preferences:decisionHandler:) delegate method, skipping default implementation
+    var primaryNavigationPolicyHandler: ((WKWebView, WKNavigationAction, @escaping (WKNavigationActionPolicy) -> Void) -> Void)?
+    
+    
     fileprivate var interceptOnlyAsyncAjaxRequestsPluginScript: PluginScript?
     
     init(id: Any?, plugin: SwiftFlutterPlugin?, frame: CGRect, configuration: WKWebViewConfiguration,
@@ -1831,7 +1835,13 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate,
         if windowId != nil, !windowCreated {
             windowBeforeCreatedCallbacks.append(runCallback)
         } else {
-            runCallback()
+            if let primaryNavigationPolicyHandler {
+                primaryNavigationPolicyHandler(webView, navigationAction, decisionHandler)
+                return
+            }
+            else {
+                runCallback()
+            }
         }
     }
     

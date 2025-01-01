@@ -11,6 +11,8 @@ import Foundation
 public class FlutterWebViewFactory: NSObject, FlutterPlatformViewFactory {
     static let VIEW_TYPE_ID = "com.pichillilorenzo/flutter_inappwebview"
     
+    public static weak var lastCreatedWebViewController: FlutterWebViewController?
+    
     private var plugin: SwiftFlutterPlugin
     
     init(plugin: SwiftFlutterPlugin) {
@@ -68,6 +70,8 @@ public class FlutterWebViewFactory: NSObject, FlutterPlatformViewFactory {
         if shouldMakeInitialLoad {
             flutterWebView?.makeInitialLoad(params: arguments!)
         }
+        
+        FlutterWebViewFactory.lastCreatedWebViewController = flutterWebView
         
         return flutterWebView!
     }
