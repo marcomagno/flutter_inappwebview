@@ -1806,17 +1806,22 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate,
                  decidePolicyFor navigationAction: WKNavigationAction,
                  decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         var decisionHandlerCalled = false
+        
+        // Create a wrapped decision handler that prevents multiple calls
+        let safeDecisionHandler: (WKNavigationActionPolicy) -> Void = { policy in
+            if !decisionHandlerCalled {
+                decisionHandlerCalled = true
+                decisionHandler(policy)
+            }
+        }
+        
         let callback = WebViewChannelDelegate.ShouldOverrideUrlLoadingCallback()
         callback.nonNullSuccess = { (response: WKNavigationActionPolicy) in
-            decisionHandlerCalled = true
-            decisionHandler(response)
+            safeDecisionHandler(response)
             return false
         }
         callback.defaultBehaviour = { (response: WKNavigationActionPolicy?) in
-            if !decisionHandlerCalled {
-                decisionHandlerCalled = true
-                decisionHandler(.allow)
-            }
+            safeDecisionHandler(.allow)
         }
         callback.error = { [weak callback] (code: String, message: String?, details: Any?) in
             print(code + ", " + (message ?? ""))
@@ -1835,7 +1840,8 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate,
             windowBeforeCreatedCallbacks.append(runCallback)
         } else {
             if let primaryNavigationPolicyHandler {
-                primaryNavigationPolicyHandler(webView, navigationAction, decisionHandler)
+                // Use the safe decision handler for the primary handler too
+                primaryNavigationPolicyHandler(webView, navigationAction, safeDecisionHandler)
                 return
             }
             else {
